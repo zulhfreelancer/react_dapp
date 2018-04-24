@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
-
 import { drizzleConnect } from "drizzle-react";
 import { ContractData, ContractForm } from "drizzle-react-components";
+import "./App.css";
 
 class App extends Component {
   render() {
@@ -14,6 +12,10 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             <h1 className="App-title">Tutorial Token</h1>
+            <p>
+              <strong>Web3 Account:</strong>{" "}
+              {accounts[0]}
+            </p>
             <p>
               <strong>Total Supply</strong>:{" "}
               <ContractData
@@ -35,8 +37,8 @@ class App extends Component {
                 methodArgs={[accounts[0]]}
               />
             </p>
-            <h3>Send Tokens</h3>
           </header>
+          <h3>Send Tokens</h3>
           <div className="App-intro">
             <ContractForm
               contract="TutorialToken"
@@ -56,9 +58,10 @@ const mapStateToProps = state => {
   return {
     accounts: state.accounts,
     drizzleStatus: state.drizzleStatus,
-    TutorialToken: state.contracts.TutorialToken
-  };
-};
+    TutorialToken: state.contracts.TutorialToken,
+    web3: state.web3
+  }
+}
 
 const AppContainer = drizzleConnect(App, mapStateToProps);
 export default AppContainer;

@@ -8,14 +8,14 @@ import { DrizzleProvider } from "drizzle-react";
 // Import contract
 import TutorialToken from "./contracts/TutorialToken.json";
 
-console.log(TutorialToken);
+// console.log(TutorialToken);
 
 const options = {
   web3: {
     block: false,
     fallback: {
       type: "ws",
-      url: "ws://127.0.0.1:7545"
+      url: "ws://127.0.0.1:8546" // Geth
     }
   },
   contracts: [TutorialToken],
